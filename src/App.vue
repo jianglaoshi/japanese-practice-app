@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/VerbFormPractice">动词变变变</router-link>
+      <router-link to="/VerbFormPractice">动词变变变</router-link>|
+      <router-link to="/WordPractice">单词练练练</router-link>
     </nav>
     <router-view />
   </div>
