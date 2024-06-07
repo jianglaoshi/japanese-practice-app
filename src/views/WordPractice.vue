@@ -21,7 +21,7 @@
                 <p>练习结束！总共练习：{{ totalWords }}，正确：{{ correctWords }}</p>
                 <button @click="resetPractice">重新开始练习</button>
             </div>
-            <ul class="results-list">
+            <ul class="scrollable-ul">
                 <li v-for="(word, index) in words.slice(0, currentIndex).reverse()" :key="index">
                     {{ word.chinese }}: {{ word.japanese }} - <span :style="{ color: word.correct ? 'green' : 'red' }">{{
                         word.correct ? '正确' : '错误' }}</span>
@@ -191,26 +191,18 @@ export default {
 }
 
 .lesson-item {
-    width: 16.66%;
-    /* 每行显示6个 */
+    width: 25%;
+    /* 每行显示5个 */
     box-sizing: border-box;
-    padding: 5px;
+    padding-left: 40px;
     cursor: pointer;
+    text-align: left;
 }
 
 .lesson-item input {
     margin-right: 5px;
 }
 
-.results-list {
-    max-height: 400px;
-    /* 固定高度 */
-    overflow-y: auto;
-    /* 添加滚动条 */
-    list-style: none;
-    padding-left: 300px;
-    text-align: left;
-}
 
 .results-summary {
     margin-top: 20px;
@@ -218,6 +210,48 @@ export default {
 
 .practice-container {
     margin-bottom: 20px;
+}
+
+/* Container for the ul element */
+.scrollable-ul {
+    height: 400px;
+    /* Set the desired height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    border: 1px solid #ccc;
+    /* Optional: add a border for visual clarity */
+    padding: 0;
+    /* Remove default padding */
+    margin: 0;
+    /* Remove default margin */
+    list-style-type: none;
+    /* Optional: remove bullets */
+}
+
+/* Style for li elements */
+.scrollable-ul li {
+    padding: 10px;
+    /* Optional: add padding to list items */
+    border-bottom: 1px solid #eee;
+    /* Optional: add a bottom border to list items */
+}
+
+/* Optional: styling scrollbar */
+.scrollable-ul::-webkit-scrollbar {
+    width: 8px;
+    /* Width of the vertical scrollbar */
+}
+
+.scrollable-ul::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Color of the scrollbar thumb */
+    border-radius: 4px;
+    /* Round the scrollbar thumb */
+}
+
+.scrollable-ul::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Color of the scrollbar thumb on hover */
 }
 </style>
   
