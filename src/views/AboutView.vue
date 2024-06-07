@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Japanese Verb Practice</h1>
+    <h1>动词变变变</h1>
     <div v-if="!practiceStarted">
       <label>
         请输入要练习的单词数量：
