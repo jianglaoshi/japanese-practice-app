@@ -6,7 +6,7 @@
                 请输入{{ getFormLabel(currentForm) }}：
                 <input type="text" v-model="answer" @keyup.enter="handleSubmit" />
             </label>
-            <button type="submit">提交</button>
+            <!-- <button type="submit">提交</button> -->
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
         </form>
         <ul class="scrollable-ul">
@@ -75,11 +75,11 @@ export default {
                         verbForms.get(form).push({ verb, form });
                     });
                 });
-
+                console.log(forms);
                 // 随机选择练习题目
                 forms.forEach(form => {
                     const formsArray = verbForms.get(form);
-                    for (let i = 0; i < Math.min(this.practiceCount, formsArray.length); i++) {
+                    for (let i = 0; i < Math.min(this.practiceCount / 8, formsArray.length); i++) {
                         const randomIndex = Math.floor(Math.random() * formsArray.length);
                         exercises.push(formsArray[randomIndex]);
                         formsArray.splice(randomIndex, 1);
@@ -87,6 +87,7 @@ export default {
                 });
 
                 this.currentPractice = exercises;
+                console.log(this.currentPractice);
                 // 打乱题目顺序
                 this.currentPractice = this.currentPractice.sort(() => Math.random() - 0.5);
                 this.currentPractice = this.currentPractice.slice(0, this.practiceCount);

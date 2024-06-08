@@ -46,7 +46,7 @@ export default {
       }
     },
     restartPractice() {
-      this.practiceCount = 0;
+      this.practiceCount = 50;
       this.practiceStarted = false;
     },
   },
