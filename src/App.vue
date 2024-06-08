@@ -3,7 +3,8 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/VerbFormPractice">动词变变变</router-link>|
-      <router-link to="/WordPractice">单词练练练</router-link>
+      <router-link to="/WordPractice">单词练练练</router-link>|
+      <router-link to="/VerbPractice">动词背背背</router-link>|
     </nav>
     <router-view />
   </div>
