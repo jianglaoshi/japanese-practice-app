@@ -230,4 +230,32 @@ export default class Verb {
     }
     return '';
   }
+
+  getPassivity() {
+    if (this.type === 'ichidan') {
+      return this.getBaseVerb() + 'られる';
+    } else if (this.type === 'godan') {
+      const lastChar = this.getLastChar();
+      const naiEnding = {
+        'う': 'われる',
+        'つ': 'たれる',
+        'る': 'られる',
+        'む': 'まれる',
+        'ぶ': 'ばれる',
+        'ぬ': 'なれる',
+        'く': 'かれる',
+        'ぐ': 'がれる',
+        'す': 'される'
+      };
+      return this.getBaseVerb() + naiEnding[lastChar];
+    } else if (this.type === 'irregular') {
+      if (this.plainForm.endsWith('する')) {
+        return this.getBaseVerb() + 'される';
+      } else if (this.plainForm.endsWith('くる')) {
+        return this.getBaseVerb() + 'こられる';
+      }
+    }
+    return '';
+  }
+  
 }

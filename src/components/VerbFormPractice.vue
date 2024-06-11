@@ -34,7 +34,7 @@
 <script>
 import Verb from '../Verb';
 
-const forms = ["masu", "te", "ta", "nai", "imperative", "volitional", "potential", "conditional"];
+const forms = ["masu", "te", "ta", "nai", "imperative", "volitional", "potential", "conditional", "Passivity"];
 
 export default {
     name: 'VerbFormPractice',
@@ -146,6 +146,8 @@ export default {
                     return verb.getPotentialForm();
                 case 'conditional':
                     return verb.getConditionalForm();
+                case 'Passivity':
+                    return verb.getPassivity();
                 default:
                     return '';
             }
@@ -168,6 +170,8 @@ export default {
                     return '可能形';
                 case 'conditional':
                     return '假定形';
+                case 'Passivity':
+                    return '被动形';
                 default:
                     return '';
             }
