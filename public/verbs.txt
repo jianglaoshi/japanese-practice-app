@@ -12,7 +12,7 @@
 働く godan
 始まる godan
 終わる godan
-起きる godan
+起きる ichidan
 寝る ichidan
 勉強する irregular
 帰る godan
