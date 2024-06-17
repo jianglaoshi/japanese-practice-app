@@ -34,13 +34,14 @@
 <script>
 import Verb from '../Verb';
 
-const forms = ["masu", "te", "ta", "nai", "imperative", "volitional", "potential", "conditional", "Passivity"];
+//const forms = ["masu", "te", "ta", "nai", "imperative", "volitional", "potential", "conditional", "Passivity"];
 
 export default {
     name: 'VerbFormPractice',
     props: {
         verbs: Array,
         practiceCount: Number,
+        selectedForms: Array,
     },
     data() {
         return {
@@ -50,6 +51,7 @@ export default {
             answer: '',
             errorMessage: '',
             results: [],
+            testForms: [],
         };
     },
     watch: {
@@ -65,21 +67,26 @@ export default {
             if (this.verbs.length > 0 && this.practiceCount > 0) {
                 const exercises = [];
 
+                console.log(this.selectedForms)
+
+                for (let i = 0; i < this.practiceCount; i++) {
+                    this.testForms.push(this.selectedForms[Math.floor(Math.random() * this.selectedForms.length)]);
+                }
                 const verbForms = new Map();
-                forms.forEach(form => verbForms.set(form, []));
+                this.testForms.forEach(form => verbForms.set(form, []));
 
                 // 根据动词类型和变形类型分组
                 this.verbs.forEach(verbData => {
                     const verb = new Verb(verbData.plainForm, verbData.type);
-                    forms.forEach(form => {
+                    this.testForms.forEach(form => {
                         verbForms.get(form).push({ verb, form });
                     });
                 });
-                console.log(forms);
+                // console.log(forms);
                 // 随机选择练习题目
-                forms.forEach(form => {
+                this.testForms.forEach(form => {
                     const formsArray = verbForms.get(form);
-                    for (let i = 0; i < Math.min(this.practiceCount / 8, formsArray.length); i++) {
+                    for (let i = 0; i < Math.min(this.practiceCount / this.testForms.length, formsArray.length); i++) {
                         const randomIndex = Math.floor(Math.random() * formsArray.length);
                         exercises.push(formsArray[randomIndex]);
                         formsArray.splice(randomIndex, 1);
@@ -87,7 +94,7 @@ export default {
                 });
 
                 this.currentPractice = exercises;
-                console.log(this.currentPractice);
+                // console.log(this.currentPractice);
                 // 打乱题目顺序
                 this.currentPractice = this.currentPractice.sort(() => Math.random() - 0.5);
                 this.currentPractice = this.currentPractice.slice(0, this.practiceCount);
