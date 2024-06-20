@@ -15,10 +15,10 @@
           <label><input type="checkbox" value="nai" v-model="selectedForms" />ない形</label>
           <label><input type="checkbox" value="imperative" v-model="selectedForms" />命令形</label>
           <label><input type="checkbox" value="volitional" v-model="selectedForms" />意志形</label>
-          <label><input type="checkbox" value="potential" v-model="selectedForms" />可能形</label>
-          <label><input type="checkbox" value="conditional" v-model="selectedForms" />假定形</label>
-          <label><input type="checkbox" value="Passivity" v-model="selectedForms" />被动形</label>
-          <label><input type="checkbox" value="Causative" v-model="selectedForms" />使役形</label>
+          <label><input type="checkbox" value="potential" v-model="selectedForms" />可能形**</label>
+          <label><input type="checkbox" value="conditional" v-model="selectedForms" />假定形**</label>
+          <label><input type="checkbox" value="Passivity" v-model="selectedForms" />被动形**</label>
+          <label><input type="checkbox" value="Causative" v-model="selectedForms" />使役形**</label>
           <label><input type="checkbox" value="Causative2" v-model="selectedForms" />使役被动形</label>
         </div>
       </div>
