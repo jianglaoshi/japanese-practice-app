@@ -155,6 +155,10 @@ export default {
                     return verb.getConditionalForm();
                 case 'Passivity':
                     return verb.getPassivity();
+                case 'Causative':
+                    return verb.getCausative();
+                case 'Causative2':
+                    return verb.getCausative2();
                 default:
                     return '';
             }

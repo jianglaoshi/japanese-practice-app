@@ -18,6 +18,8 @@
           <label><input type="checkbox" value="potential" v-model="selectedForms" />可能形</label>
           <label><input type="checkbox" value="conditional" v-model="selectedForms" />假定形</label>
           <label><input type="checkbox" value="Passivity" v-model="selectedForms" />被动形</label>
+          <label><input type="checkbox" value="Causative" v-model="selectedForms" />使役形</label>
+          <label><input type="checkbox" value="Causative2" v-model="selectedForms" />使役被动形</label>
         </div>
       </div>
       <button @click="startPractice" :disabled="practiceCount < 1">开始练习</button>
@@ -38,7 +40,7 @@ export default {
   data() {
     return {
       verbs: [],
-      practiceCount: 50,
+      practiceCount: 30,
       practiceStarted: false,
       selectedForms: []
     };
@@ -66,7 +68,7 @@ export default {
       }
     },
     restartPractice() {
-      this.practiceCount = 50;
+      this.practiceCount = 30;
       this.practiceStarted = false;
     },
   },

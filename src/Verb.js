@@ -258,4 +258,57 @@ export default class Verb {
     return '';
   }
   
+  getCausative() {
+    if (this.type === 'ichidan') {
+      return this.getBaseVerb() + 'させる';
+    } else if (this.type === 'godan') {
+      const lastChar = this.getLastChar();
+      const naiEnding = {
+        'う': 'わせる',
+        'つ': 'たせる',
+        'る': 'らせる',
+        'む': 'ませる',
+        'ぶ': 'ばせる',
+        'ぬ': 'なせる',
+        'く': 'かせる',
+        'ぐ': 'がせる',
+        'す': 'させる'
+      };
+      return this.getBaseVerb() + naiEnding[lastChar];
+    } else if (this.type === 'irregular') {
+      if (this.plainForm.endsWith('する')) {
+        return this.getBaseVerb() + 'させる';
+      } else if (this.plainForm.endsWith('くる')) {
+        return this.getBaseVerb() + 'こさせる';
+      }
+    }
+    return '';
+  }
+
+  getCausative2() {
+    if (this.type === 'ichidan') {
+      return this.getBaseVerb() + 'させられる';
+    } else if (this.type === 'godan') {
+      const lastChar = this.getLastChar();
+      const naiEnding = {
+        'う': 'わされる',
+        'つ': 'たされる',
+        'る': 'らされる',
+        'む': 'まされる',
+        'ぶ': 'ばされる',
+        'ぬ': 'なされる',
+        'く': 'かされる',
+        'ぐ': 'がされる',
+        'す': 'さされる'
+      };
+      return this.getBaseVerb() + naiEnding[lastChar];
+    } else if (this.type === 'irregular') {
+      if (this.plainForm.endsWith('する')) {
+        return this.getBaseVerb() + 'させられる';
+      } else if (this.plainForm.endsWith('くる')) {
+        return this.getBaseVerb() + 'こさせられる';
+      }
+    }
+    return '';
+  }
 }
