@@ -183,6 +183,10 @@ export default {
                     return '假定形';
                 case 'Passivity':
                     return '被动形';
+                case 'Causative':
+                    return '使役形';
+                case 'Causative2':
+                    return '使役被动形';
                 default:
                     return '';
             }
