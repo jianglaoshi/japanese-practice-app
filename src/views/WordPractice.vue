@@ -26,6 +26,7 @@
                     </li>
                 </ul>
                 <button @click="resetPractice">重新开始练习</button>
+                <button @click="openNewPage" style="margin-left:10px;">记录错题</button>
             </div>
             <ul v-if="!practiceCompleted" class="scrollable-ul">
                 <li v-for="(word, index) in words.slice(0, currentIndex).reverse()" :key="index">
@@ -160,6 +161,25 @@ export default {
             this.userInput = '';
             this.feedback = '';
             this.selectedLessons = [];
+        },
+        openNewPage() {
+            const textToCopy = this.words.slice(0, this.currentIndex).reverse().filter(word => !word.correct).map(word => `${word.chinese} ${word.japanese}`)
+                .join('\n');
+
+            // 创建一个临时的 textarea 元素
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+
+            // 选择并复制文本
+            textarea.select();
+            document.execCommand('copy');
+
+            // 移除临时的 textarea 元素
+            document.body.removeChild(textarea);
+            console.log(textToCopy);
+
+            window.open('https://err.laodeng123.sbs/', '_blank');
         }
     }
 };
