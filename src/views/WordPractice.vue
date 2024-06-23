@@ -19,9 +19,15 @@
             </div>
             <div v-if="practiceCompleted" class="results-summary">
                 <p>练习结束！总共练习：{{ totalWords }}，正确：{{ correctWords }}</p>
+                <ul class="scrollable-ul">
+                    <li v-for="(word, index) in words.slice(0, currentIndex).reverse().filter(word => !word.correct)"
+                        :key="index">
+                        {{ word.chinese }} {{ word.japanese }}
+                    </li>
+                </ul>
                 <button @click="resetPractice">重新开始练习</button>
             </div>
-            <ul class="scrollable-ul">
+            <ul v-if="!practiceCompleted" class="scrollable-ul">
                 <li v-for="(word, index) in words.slice(0, currentIndex).reverse()" :key="index">
                     {{ word.chinese }}: {{ word.japanese }} - <span :style="{ color: word.correct ? 'green' : 'red' }">{{
                         word.correct ? '正确' : '错误' }}</span>
