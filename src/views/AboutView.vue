@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       verbs: [],
-      practiceCount: 30,
+      practiceCount: 50,
       practiceStarted: false,
       selectedForms: []
     };
@@ -68,7 +68,7 @@ export default {
       }
     },
     restartPractice() {
-      this.practiceCount = 30;
+      this.practiceCount = 50;
       this.practiceStarted = false;
     },
   },
