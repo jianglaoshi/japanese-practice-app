@@ -77,13 +77,13 @@ export default {
                 if (!response.ok) {
                     throw new Error('Failed to fetch lesson list');
                 }
-                const lessonList = await response.json();
+                this.sortedLessons = await response.json();
                 // 对课程文件名进行排序
-                this.sortedLessons = lessonList.sort((a, b) => {
-                    const numA = parseInt(a.match(/\d+/)?.[0]);
-                    const numB = parseInt(b.match(/\d+/)?.[0]);
-                    return numA - numB;
-                });
+                //this.sortedLessons = lessonList.sort((a, b) => {
+                //    const numA = parseInt(a.match(/\d+/)?.[0]);
+                //    const numB = parseInt(b.match(/\d+/)?.[0]);
+                //    return numA - numB;
+                //});
             } catch (error) {
                 console.error(error);
                 this.errorMessage = '无法加载课程列表。';
