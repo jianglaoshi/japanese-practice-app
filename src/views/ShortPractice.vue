@@ -23,15 +23,16 @@
             </div>
             <ul class="scrollable-ul">
                 <li v-for="(word, index) in words.slice(0, currentIndex).reverse()" :key="index">
-                    {{ word.chinese }}: {{ word.japanese }} - <span :style="{ color: word.correct ? 'green' : 'red' }">{{
-                        word.correct ? '正确' : '错误' }}</span>
+                    {{ word.chinese }}: {{ word.japanese }} - <span
+                        :style="{ color: word.correct ? 'green' : 'red' }">{{
+                            word.correct ? '正确' : '错误' }}</span>
                 </li>
             </ul>
         </div>
         <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
     </div>
 </template>
-  
+
 <script>
 export default {
     data() {
@@ -71,12 +72,13 @@ export default {
                     throw new Error('Failed to fetch lesson list');
                 }
                 const lessonList = await response.json();
+                this.sortedLessons = lessonList;
                 // 对课程文件名进行排序
-                this.sortedLessons = lessonList.sort((a, b) => {
-                    const numA = parseInt(a.match(/\d+/)?.[0]);
-                    const numB = parseInt(b.match(/\d+/)?.[0]);
-                    return numA - numB;
-                });
+                //this.sortedLessons = lessonList.sort((a, b) => {
+                //    const numA = parseInt(a.match(/\d+/)?.[0]);
+                //    const numB = parseInt(b.match(/\d+/)?.[0]);
+                //    return numA - numB;
+                //});
             } catch (error) {
                 console.error(error);
                 this.errorMessage = '无法加载课程列表。';
@@ -158,7 +160,7 @@ export default {
     }
 };
 </script>
-  
+
 <style>
 .error {
     color: red;
@@ -255,4 +257,3 @@ export default {
     /* Color of the scrollbar thumb on hover */
 }
 </style>
-  
