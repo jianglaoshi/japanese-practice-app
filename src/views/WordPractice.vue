@@ -30,15 +30,16 @@
             </div>
             <ul v-if="!practiceCompleted" class="scrollable-ul">
                 <li v-for="(word, index) in words.slice(0, currentIndex).reverse()" :key="index">
-                    {{ word.chinese }}: {{ word.japanese }} - <span :style="{ color: word.correct ? 'green' : 'red' }">{{
-                        word.correct ? '正确' : '错误' }}</span>
+                    {{ word.chinese }}: {{ word.japanese }} - <span
+                        :style="{ color: word.correct ? 'green' : 'red' }">{{
+                            word.correct ? '正确' : '错误' }}</span>
                 </li>
             </ul>
         </div>
         <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
     </div>
 </template>
-  
+
 <script>
 export default {
     data() {
@@ -179,12 +180,12 @@ export default {
             document.body.removeChild(textarea);
             console.log(textToCopy);
 
-            window.open('https://err.laodeng123.sbs/', '_blank');
+            window.open('https://err.laodeng.us/', '_blank');
         }
     }
 };
 </script>
-  
+
 <style>
 .error {
     color: red;
@@ -280,4 +281,3 @@ export default {
     /* Color of the scrollbar thumb on hover */
 }
 </style>
-  
