@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     startPractice() {
-      console.log(this.selectedForms)
       if (this.practiceCount <= 0 || this.selectedForms.length === 0) {
         alert('请输入有效的练习数量并选择至少一种变形形式');
         return;

@@ -67,8 +67,6 @@ export default {
             if (this.verbs.length > 0 && this.practiceCount > 0) {
                 const exercises = [];
 
-                console.log(this.selectedForms)
-
                 for (let i = 0; i < this.practiceCount; i++) {
                     this.testForms.push(this.selectedForms[Math.floor(Math.random() * this.selectedForms.length)]);
                 }
